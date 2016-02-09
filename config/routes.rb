@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'materials/create'
 
   get 'materials/destroy'
+  
 
 
 
