@@ -10,7 +10,7 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
 
-    if @resume.save
+    if @material.save
       redirect_to materials_path, notice: "The resume #{@material.name} has been uploaded."
     else
       render "new"
@@ -25,6 +25,6 @@ class MaterialsController < ApplicationController
 
 private
   def material_params
-    params.require(:resume).permit(:name, :attachment)
+    params.require(:material).permit(:name, :attachment)
   end
 end

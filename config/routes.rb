@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  
+ get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  resources :users
+
+  get 'admin'=>'admin#index'
+  controller :sessions do
+    get 'login'=> :new
+    post 'login'=> :create
+    delete 'logout'=> :destroy
+  end
+
   get 'materials/index'
 
   get 'materials/new'
@@ -10,10 +24,10 @@ Rails.application.routes.draw do
 
 
 
-Web3::Application.routes.draw do
+#SaRana::Application.routes.draw do
   resources :materials, only: [:index, :new, :create, :destroy]
   root "materials#index"
-end
+#end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
