@@ -13,20 +13,16 @@ Rails.application.routes.draw do
     delete 'logout'=> :destroy
   end
 
-  get 'materials/index'
 
-  get 'materials/new'
-
-  get 'materials/create'
-
-  get 'materials/destroy'
-  
-
-
-
+resources :pages, only: [:show] do
+    member do
+      post 'comment'
+      post 'like'
+    end
+end
 
 #SaRana::Application.routes.draw do
-  resources :materials, only: [:index, :new, :create, :destroy]
+  resources :materials, only: [:index, :new, :create, :destroy, :show]
   root "materials#index"
 #end
 

@@ -21,7 +21,7 @@
         <td><%= material.name %></td>
         <td><%= link_to "Download Resume", material.attachment_url %></td>
         <td><%= button_to "Delete",  material, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{material.name}?" %></td>
-        <td>  <%= button_to 'View', index: :post %></td>
+        <td>  <%= link_to 'View', material_path(material) %></td>
 
       </tr>
     <% end %>

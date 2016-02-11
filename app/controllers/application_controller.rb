@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :authorize
   protected
   def authorize
-   unless User.find_by(id: session[:user_id])
+   @user = User.find_by(id: session[:user_id])
+   unless @user
    	redirect_to login_url, notice: "Kindly Login to have access"
   end
 end

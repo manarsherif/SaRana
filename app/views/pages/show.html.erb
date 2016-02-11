@@ -1,0 +1,25 @@
+<%= image_tag(@page.page_path) %>
+<%= form_tag(comment_page_path(@page), method: "post") do %>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field_tag(:title) %>
+  <%= label_tag(:comment, "Comment:") %>
+  <%= text_field_tag(:comment) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<% if @user.voted_for? @page %>
+<%= link_to "unlike", like_page_path(@page), method: "post" %>
+<% else %>
+<%= link_to "Like", like_page_path(@page), method: "post" %>
+<% end %>
+<p><%= @page.votes_for.size %> Liked this</p>
+
+<% @page.comments.recent.all.each do |c| %>
+<p>Username</p>
+<div> <%= c.user.nil? ? 'anonymous' : c.user.username %> </div>
+<p>Title</p>
+<div> <%= c.title %> </div>
+<p>Comment</p>
+<div> <%= c.comment %> </div>
+<hr>
+<% end %>

@@ -1,0 +1,6 @@
+
+<h1><%= @material.name %></h1>
+<% @material.pages.each do |p| %>
+<a href="<%= page_path (p) %>"><%= image_tag(p.page_path, height: '100', width: '100', text: p.id) %></a>
+
+<% end %>
