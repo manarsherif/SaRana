@@ -1,25 +1,37 @@
 <%= image_tag(@page.page_path) %>
+<div class="like">
+<% if @user.voted_for? @page %>
+<%= button_to "unlike", like_page_path(@page), method: "post" %>
+<% else %>
+<%= button_to "Like", like_page_path(@page), method: "post" %>
+<% end %>
+<p><%= @page.votes_for.size %> liked this</p>
+
+</div>
+</br>
+
+<div class="form">
 <%= form_tag(comment_page_path(@page), method: "post") do %>
   <%= label_tag(:title, "Title:") %>
   <%= text_field_tag(:title) %>
   <%= label_tag(:comment, "Comment:") %>
-  <%= text_field_tag(:comment) %>
+  <%= text_area_tag(:comment) %>
   <%= submit_tag("Submit") %>
 <% end %>
+<p> Comments</p>
+</div>
 
-<% if @user.voted_for? @page %>
-<%= link_to "unlike", like_page_path(@page), method: "post" %>
-<% else %>
-<%= link_to "Like", like_page_path(@page), method: "post" %>
-<% end %>
-<p><%= @page.votes_for.size %> Liked this</p>
+<div class="comments">
 
 <% @page.comments.recent.all.each do |c| %>
-<p>Username</p>
-<div> <%= c.user.nil? ? 'anonymous' : c.user.username %> </div>
-<p>Title</p>
-<div> <%= c.title %> </div>
-<p>Comment</p>
-<div> <%= c.comment %> </div>
+
+<!-- <p>Title</p> -->
+<h4> <%= c.title %> </h4>
+<!-- <p>Comment</p> -->
+<h> <%= c.comment %> </h>
+</br>
+<p> <%= c.user.nil? ? 'anonymous' : c.user.username %> </p>
 <hr>
 <% end %>
+</div>
+</br>

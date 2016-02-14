@@ -1,3 +1,32 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+p{
+	font-siza: 18px;
+	font-family: sans-serif;
+	color: #0000FF;
+	font-weight: bold;
+}
+div{
+	margin-left: 20px;
+}
+div.comments{
+	background-color:#eee;
+	margin-left: 15px;
+	font-color: #0000FF;
+}
+p.comments{
+	color:#000000;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+p.form{
+
+	font-weight: bold;
+	color: #0066FF;
+	font-size: 20px;
+}
+textarea{
+	width: 500px; height: 100px;
+}
